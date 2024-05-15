@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 80);
             $table->text('description')->nullable();
             $table->string('price', 30)->nullable();
-            $table->string('thumb')->nullable();
+            $table->string('thumb', 255)->nullable();
             $table->string('series', 50)->nullable();
             $table->date('sale_date')->nullable();
             $table->string('type', 50)->nullable();
