@@ -1,1 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+.nav-active {
+    border-bottom: 5px solid #0d6efd;
+}
+
+.no_outline {
+    outline: none;
+}
+
+.jumbotron {
+    height: 350px;
+    background-image: url(../img/jumbotron.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    .footer_top {
+        background-image: url(../img/footer-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+        .logo_footer {
+            background-image: url(../img/dc-logo-bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+}
+
+.banner_img {
+    position: relative;
+    height: 50px;
+
+    img {
+        position: absolute;
+        bottom: 30px;
+    }
+}
