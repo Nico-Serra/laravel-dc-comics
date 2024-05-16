@@ -22,7 +22,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-       return view('comics.create');
+        return view('comics.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -60,7 +60,11 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        $comic->update($data);
+
+        return to_route('comics.show', $comic);
     }
 
     /**
@@ -68,6 +72,10 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        //dd($comic);
+
+        $comic->delete();
+
+        return to_route('comics.index');
     }
 }
