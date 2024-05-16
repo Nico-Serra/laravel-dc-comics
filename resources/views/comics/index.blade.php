@@ -8,6 +8,7 @@
             <a href="{{ route('comics.create') }}" class="btn btn-primary">Add new Comic</a>
         </div>
         <div class="table-responsive">
+            
             <table class="table table-primary">
                 <thead>
                     <tr>
