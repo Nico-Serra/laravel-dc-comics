@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -28,21 +30,15 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
         //dd($request->all());
 
         //$data = $request->all();
 
-        $val_data = $request->validate([
-            'title' => 'required|min:5|max:80',
-            'description' => 'nullable|min:10',
-            'price' => 'nullable|min:5|max:30',
-            'thumb' => 'nullable|min:50|max:255',
-            'series' => 'nullable|min:5|max:50',
-            'sale_date' => 'nullable',
-            'type' => 'nullable|min:3|max:50'
-        ]);
+        $val_data = $request->validated();
+
+        //dd($val_data);
 
         Comic::create($val_data);
 
@@ -68,17 +64,9 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $val_data = $request->validate([
-            'title' => 'required|min:5|max:80',
-            'description' => 'nullable|min:10',
-            'price' => 'nullable|min:5|max:30',
-            'thumb' => 'nullable|min:50|max:255',
-            'series' => 'nullable|min:5|max:50',
-            'sale_date' => 'nullable',
-            'type' => 'nullable|min:3|max:50'
-        ]);
+        $val_data = $request->validated();
 
         $comic->update($val_data);
 
@@ -94,6 +82,6 @@ class ComicController extends Controller
 
         $comic->delete();
 
-        return to_route('comics.index');
+        return redirect()->back();
     }
 }
